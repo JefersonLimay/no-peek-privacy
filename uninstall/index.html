@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>No Peek</title>
+    <style>
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-weight: 400;
+        font-display: swap;
+        src: url('fonts/plus-jakarta-sans-latin-400-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-weight: 600;
+        font-display: swap;
+        src: url('fonts/plus-jakarta-sans-latin-600-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-weight: 700;
+        font-display: swap;
+        src: url('fonts/plus-jakarta-sans-latin-700-normal.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Bricolage Grotesque';
+        font-weight: 700;
+        font-display: swap;
+        src: url('fonts/bricolage-grotesque-latin-700-normal.woff2') format('woff2');
+      }
+
+      :root {
+        color-scheme: light dark;
+        --bg: light-dark(#fbfafd, #17151c);
+        --surface: light-dark(#ffffff, #211e28);
+        --surface-muted: light-dark(#f3f0f8, #2b2733);
+        --line: light-dark(#ece8f3, #353040);
+        --ink: light-dark(#4a4458, #ece8f3);
+        --ink-muted: light-dark(#6e6780, #aaa3b9);
+        --ink-disabled: light-dark(#a9a3b6, #6c6579);
+        --on-ink: light-dark(#ffffff, #1b1920);
+        --blue: #a7c7e7;
+        --mint-soft: light-dark(#e7f7ef, #1c3a30);
+        --mint-ink: light-dark(#2f8f6b, #8fdcbd);
+        --lavender-soft: light-dark(#f3f0f8, #2c2640);
+        --lavender-ink: light-dark(#6e5ba8, #c2b4ee);
+        --pink-ink: light-dark(#c24b61, #f4a3af);
+        --shadow: light-dark(rgba(74, 68, 88, 0.08), rgba(0, 0, 0, 0.35));
+        --focus: 0 0 0 3px light-dark(rgba(167, 199, 231, 0.7), rgba(167, 199, 231, 0.45));
+        --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+        --display: 'Bricolage Grotesque', var(--sans);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 56px 16px;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 15px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      main {
+        width: 100%;
+        max-width: 560px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--display);
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .heading {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      h1 {
+        font-family: var(--display);
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+      }
+
+      .muted {
+        color: var(--ink-muted);
+      }
+
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: var(--surface);
+        box-shadow: 0 12px 32px var(--shadow);
+      }
+
+      fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      legend,
+      label.title {
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 48px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        cursor: pointer;
+        transition:
+          border-color 0.15s ease,
+          background 0.15s ease;
+      }
+
+      .option:hover {
+        background: var(--surface-muted);
+      }
+
+      .option:has(input:checked) {
+        border-color: var(--lavender-ink);
+        background: var(--lavender-soft);
+      }
+
+      .option:has(input:focus-visible) {
+        box-shadow: var(--focus);
+      }
+
+      .option input {
+        appearance: none;
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        border: 2px solid var(--ink-disabled);
+        border-radius: 50%;
+        transition: border 0.15s ease;
+      }
+
+      .option input:checked {
+        border: 6px solid var(--lavender-ink);
+      }
+
+      .option input:focus-visible {
+        outline: none;
+      }
+
+      .comment {
+        display: flex;
+        flex-direction: column;
+      }
+
+      textarea {
+        min-height: 96px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg);
+        color: inherit;
+        font: inherit;
+        resize: vertical;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: var(--blue);
+        box-shadow: var(--focus);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 50px;
+        padding: 0 24px;
+        border: none;
+        border-radius: 14px;
+        background: var(--ink);
+        color: var(--on-ink);
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        background: var(--surface-muted);
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: none;
+        box-shadow: var(--focus);
+      }
+
+      a {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .note {
+        font-size: 13px;
+      }
+
+      .error {
+        color: var(--pink-ink);
+        font-size: 13px;
+      }
+
+      .thanks {
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+        padding: 40px 24px;
+      }
+
+      .thanks .badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 56px;
+        height: 56px;
+        border-radius: 18px;
+        background: var(--mint-soft);
+        color: var(--mint-ink);
+      }
+
+      .thanks h2 {
+        font-family: var(--display);
+        font-size: 24px;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand">
+        <svg width="32" height="32" viewBox="0 0 128 128" aria-hidden="true">
+          <defs>
+            <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#A8E6CF" />
+              <stop offset="100%" stop-color="#A7C7E7" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M64 8 L108 22 V60 C108 90 90 110 64 122 C38 110 20 90 20 60 V22 Z"
+            fill="url(#shield)"
+            stroke="#4A4458"
+            stroke-width="7"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M46 64 L58 76 L84 48"
+            fill="none"
+            stroke="#FFFFFF"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        No Peek
+      </div>
+
+      <div class="heading">
+        <h1 data-i18n="title"></h1>
+        <p class="muted" data-i18n="subtitle"></p>
+      </div>
+
+      <form id="survey" class="card" novalidate>
+        <fieldset id="reasons">
+          <legend data-i18n="question"></legend>
+        </fieldset>
+
+        <div class="comment">
+          <label class="title" for="comment" data-i18n="commentLabel"></label>
+          <textarea id="comment" maxlength="1000"></textarea>
+        </div>
+
+        <p class="error" id="error" role="alert" hidden data-i18n="error"></p>
+
+        <div class="actions">
+          <button type="submit" id="submit" disabled data-i18n="submit"></button>
+          <p class="note muted" data-i18n="anonymous"></p>
+        </div>
+      </form>
+
+      <section class="card thanks" id="thanks" hidden aria-live="polite">
+        <div class="badge">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12.5l4.5 4.5L19 7.5" />
+          </svg>
+        </div>
+        <h2 data-i18n="thanksTitle"></h2>
+        <p class="muted" data-i18n="thanksBody"></p>
+      </section>
+
+      <p class="note muted">
+        <span data-i18n="mistake"></span>
+        <a id="reinstall" href="#" target="_blank" rel="noopener" data-i18n="reinstall"></a>
+      </p>
+    </main>
+
+    <script>
+      const FORM = {
+        action:
+          'https://docs.google.com/forms/d/e/1FAIpQLSdOdvWzNGqsoutxy8LqQCASds0nzn_uRu1T81kQ779sPGoAHw/formResponse',
+        fields: {
+          reason: 'entry.715219529',
+          comment: 'entry.931652594',
+          version: 'entry.1929502114',
+          locale: 'entry.1351826296',
+        },
+      }
+
+      const STORE_URL = 'https://chromewebstore.google.com/detail/ajblidomoinlhoiejfkalebdkpefogji'
+
+      const REASONS = ['missed_site', 'overblocking', 'hard_to_use', 'just_trying', 'found_alternative', 'other']
+
+      const TEXT = {
+        es: {
+          pageTitle: 'Lamentamos verte partir · No Peek',
+          title: 'Lamentamos verte partir',
+          subtitle: 'No Peek se desinstaló. ¿Nos cuentas por qué? Solo toma unos segundos y me ayuda a mejorarlo.',
+          question: '¿Por qué desinstalaste No Peek?',
+          reasons: {
+            missed_site: 'No bloqueaba un sitio que quería bloquear',
+            overblocking: 'Bloqueaba sitios que no debía',
+            hard_to_use: 'Era difícil de usar',
+            just_trying: 'Solo lo estaba probando',
+            found_alternative: 'Encontré otra extensión',
+            other: 'Otro motivo',
+          },
+          commentLabel: '¿Algo más que quieras contarme? (opcional)',
+          submit: 'Enviar respuesta',
+          anonymous: 'Es anónimo: no se envía ningún dato personal.',
+          error: 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.',
+          thanksTitle: '¡Gracias por tu respuesta!',
+          thanksBody: 'La leeré con atención para mejorar No Peek.',
+          mistake: '¿La desinstalaste por error?',
+          reinstall: 'Vuelve a instalarla',
+        },
+        en: {
+          pageTitle: 'Sorry to see you go · No Peek',
+          title: 'Sorry to see you go',
+          subtitle: 'No Peek has been uninstalled. Would you tell us why? It only takes a few seconds and helps me improve it.',
+          question: 'Why did you uninstall No Peek?',
+          reasons: {
+            missed_site: "It didn't block a site I wanted blocked",
+            overblocking: "It blocked sites it shouldn't have",
+            hard_to_use: 'It was hard to use',
+            just_trying: 'I was just trying it out',
+            found_alternative: 'I found another extension',
+            other: 'Another reason',
+          },
+          commentLabel: 'Anything else you would like to tell me? (optional)',
+          submit: 'Send answer',
+          anonymous: 'It is anonymous: no personal data is sent.',
+          error: 'It could not be sent. Check your connection and try again.',
+          thanksTitle: 'Thank you for your answer!',
+          thanksBody: 'I will read it carefully to improve No Peek.',
+          mistake: 'Uninstalled it by mistake?',
+          reinstall: 'Install it again',
+        },
+      }
+
+      const params = new URLSearchParams(location.search)
+      const requested = (params.get('lang') || navigator.language || 'en').toLowerCase().split('-')[0]
+      const locale = TEXT[requested] ? requested : 'en'
+      const version = (params.get('v') || '').slice(0, 20)
+      const text = TEXT[locale]
+
+      document.documentElement.lang = locale
+      document.title = text.pageTitle
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        el.textContent = text[el.dataset.i18n]
+      })
+      document.getElementById('reinstall').href = STORE_URL
+
+      const reasons = document.getElementById('reasons')
+      REASONS.forEach((code) => {
+        const label = document.createElement('label')
+        label.className = 'option'
+        const input = document.createElement('input')
+        input.type = 'radio'
+        input.name = 'reason'
+        input.value = code
+        label.append(input, document.createTextNode(text.reasons[code]))
+        reasons.append(label)
+      })
+
+      const form = document.getElementById('survey')
+      const submit = document.getElementById('submit')
+      const error = document.getElementById('error')
+
+      form.addEventListener('change', () => {
+        submit.disabled = !form.reason.value
+      })
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        if (!form.reason.value) return
+
+        submit.disabled = true
+        error.hidden = true
+
+        const data = new URLSearchParams({
+          [FORM.fields.reason]: form.reason.value,
+          [FORM.fields.comment]: document.getElementById('comment').value.trim(),
+          [FORM.fields.version]: version,
+          [FORM.fields.locale]: locale,
+        })
+
+        try {
+          if (FORM.action) await fetch(FORM.action, { method: 'POST', mode: 'no-cors', body: data })
+          form.hidden = true
+          document.getElementById('thanks').hidden = false
+        } catch {
+          error.hidden = false
+          submit.disabled = false
+        }
+      })
+    </script>
+  </body>
+</html>

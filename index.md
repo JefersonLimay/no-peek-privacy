@@ -1,6 +1,6 @@
 # Privacy Policy — No Peek
 
-Last updated: September 25, 2026
+Last updated: October 8, 2026
 
 No Peek is a Chrome extension that blocks access to adult websites. This
 policy explains what data the extension handles.
@@ -20,6 +20,8 @@ The data stored locally includes:
 - A local count of how many pages were blocked per day, for the dashboard.
   It does not record which sites were blocked.
 - Your language and theme preferences
+- The date the extension was installed, and whether you already answered
+  the review reminder, so it is only shown when it makes sense
 
 While your browser is open, No Peek also keeps temporary session data
 (whether the settings page is unlocked and which settings tab you last
@@ -47,9 +49,23 @@ No Peek does not use analytics, advertising, or tracking services of any
 kind, and it does not load remote code or resources: everything it needs,
 including fonts, is bundled inside the extension.
 
-The extension contains an optional donation link (Ko-fi) and a contact
-email address. These only open when you click them, and no data from the
-extension is sent to them.
+The extension contains an optional donation link (Ko-fi), a contact email
+address, and a reminder that links to its page on the Chrome Web Store or
+Microsoft Edge Add-ons so you can leave a review. These only open when you
+click them, and no data from the extension is sent to them.
+
+## Uninstall Survey
+
+When you uninstall No Peek, your browser opens a short, optional survey page
+(hosted on this site) asking why you uninstalled it. The page address
+includes only the extension's version number and language, so the survey
+appears in your language and answers can be matched to a release. It does
+not include your lists, settings, or browsing history.
+
+Answering is entirely optional. If you send an answer, only the reason you
+chose, any comment you write, the version number, and the language are
+stored, using Google Forms, under Google's privacy policy. No email address
+or other personal information is collected.
 
 ## Changes to this Policy
 
