@@ -21,6 +21,7 @@ The data stored locally includes:
   It does not record which sites were blocked.
 - Your language and theme preferences, and whether safe search and
   restricted YouTube are turned on
+- Whether commitment mode is on, and when it started and ends
 - The date the extension was installed, and whether you already answered
   the review reminder, so it is only shown when it makes sense
 
