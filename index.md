@@ -1,6 +1,6 @@
 # Privacy Policy — No Peek
 
-Last updated: October 8, 2026
+Last updated: October 9, 2026
 
 No Peek is a Chrome extension that blocks access to adult websites. This
 policy explains what data the extension handles.
@@ -19,7 +19,8 @@ The data stored locally includes:
   one
 - A local count of how many pages were blocked per day, for the dashboard.
   It does not record which sites were blocked.
-- Your language and theme preferences
+- Your language and theme preferences, and whether safe search and
+  restricted YouTube are turned on
 - The date the extension was installed, and whether you already answered
   the review reminder, so it is only shown when it makes sense
 
@@ -30,7 +31,12 @@ viewed). This data is cleared when the browser closes.
 ## Permissions
 
 - **declarativeNetRequest**: used to block requests to known adult
-  domains and to domains/keywords you add yourself.
+  domains and to domains/keywords you add yourself. If you turn on the
+  optional safe search setting, it also adds the safe search parameter to
+  Google, Bing and DuckDuckGo search addresses. If you turn on restricted
+  YouTube, it adds the standard "YouTube-Restrict" header to requests to
+  YouTube. Both changes are made by the browser itself; No Peek does not
+  read your searches or the pages you visit.
 - **storage**: used to save your settings locally, as described above.
 - **webNavigation**: used to detect when a page was blocked, purely to
   show a local count on your dashboard.
