@@ -22,6 +22,8 @@ The data stored locally includes:
 - Your language and theme preferences, and whether safe search and
   restricted YouTube are turned on
 - Whether commitment mode is on, and when it started and ends
+- The time of the last blocked attempt and your longest streak without one,
+  to show your streak. They do not record which site was blocked.
 - The date the extension was installed, and whether you already answered
   the review reminder, so it is only shown when it makes sense
 
