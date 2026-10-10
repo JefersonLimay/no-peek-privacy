@@ -22,9 +22,12 @@ The data stored locally includes:
 - Your language and theme preferences, and whether safe search and
   restricted YouTube are turned on
 - Whether commitment mode is on, and when it started and ends
-- The time of the last blocked attempt, your longest streak without one and
-  the streak that the last attempt ended, to show your streak. They do not
-  record which site was blocked.
+- The time of the last blocked attempt, your longest streak without one, the
+  streak that the last attempt ended and when the streak was last reset, to
+  show your streak. They do not record which site was blocked.
+- What happens when a blocked site is opened, the website to go to if you
+  choose one, and which features (streak, motivational phrase, commitment
+  mode) are shown
 - The personal reason you choose to write, if any, to show it on the blocked
   page
 - The date the extension was installed, and whether you already answered
