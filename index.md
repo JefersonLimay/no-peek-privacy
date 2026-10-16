@@ -1,6 +1,6 @@
 # Privacy Policy — No Peek
 
-Last updated: October 9, 2026
+Last updated: October 16, 2026
 
 No Peek is a Chrome extension that blocks access to adult websites. This
 policy explains what data the extension handles.
@@ -22,9 +22,8 @@ The data stored locally includes:
 - Your language and theme preferences, and whether safe search and
   restricted YouTube are turned on
 - Whether commitment mode is on, and when it started and ends
-- The time of the last blocked attempt, your longest streak without one, the
-  streak that the last attempt ended and when the streak was last reset, to
-  show your streak. They do not record which site was blocked.
+- When protection was last turned on, your longest streak with protection
+  on and when the streak was last reset, to show your streak
 - What happens when a blocked site is opened, the website to go to if you
   choose one, and which features (streak, motivational phrase, commitment
   mode) are shown
