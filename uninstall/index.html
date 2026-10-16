@@ -382,7 +382,14 @@
         },
       }
 
-      const STORE_URL = 'https://chromewebstore.google.com/detail/ajblidomoinlhoiejfkalebdkpefogji'
+      const STORE_URLS = {
+        chrome: 'https://chromewebstore.google.com/detail/ajblidomoinlhoiejfkalebdkpefogji',
+        edge: 'https://microsoftedge.microsoft.com/addons/detail/gdkbhnbdfkpffncilkoggmgegoihgfca',
+      }
+
+      const isEdge =
+        navigator.userAgentData?.brands?.some((entry) => entry.brand === 'Microsoft Edge') ||
+        /\bEdg\//.test(navigator.userAgent)
 
       const REASONS = ['missed_site', 'overblocking', 'hard_to_use', 'just_trying', 'found_alternative', 'other']
 
@@ -444,7 +451,7 @@
       document.querySelectorAll('[data-i18n]').forEach((el) => {
         el.textContent = text[el.dataset.i18n]
       })
-      document.getElementById('reinstall').href = STORE_URL
+      document.getElementById('reinstall').href = isEdge ? STORE_URLS.edge : STORE_URLS.chrome
 
       const reasons = document.getElementById('reasons')
       REASONS.forEach((code) => {
