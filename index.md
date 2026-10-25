@@ -1,6 +1,6 @@
 # Privacy Policy — No Peek
 
-Last updated: October 16, 2026
+Last updated: October 25, 2026
 
 No Peek is a Chrome extension that blocks access to adult websites. This
 policy explains what data the extension handles.
@@ -17,6 +17,9 @@ The data stored locally includes:
 - Your custom blocklist, whitelist, and keyword lists
 - A password hash and salt (not the password itself) if you choose to set
   one
+- A hash and salt of your recovery code (not the code itself), the time a
+  password reset was requested, if any, and whether a password can be reset
+  by waiting 24 hours
 - A local count of how many pages were blocked per day, for the dashboard.
   It does not record which sites were blocked.
 - Your language and theme preferences, and whether safe search and
@@ -24,6 +27,8 @@ The data stored locally includes:
 - Whether commitment mode is on, and when it started and ends
 - When protection was last turned on, your longest streak with protection
   on and when the streak was last reset, to show your streak
+- The last streak level that was celebrated, so each level is celebrated
+  only once
 - What happens when a blocked site is opened, the website to go to if you
   choose one, and which features (streak, motivational phrase, commitment
   mode) are shown
@@ -32,9 +37,11 @@ The data stored locally includes:
 - The date the extension was installed, and whether you already answered
   the review reminder, so it is only shown when it makes sense
 
-While your browser is open, No Peek also keeps temporary session data
-(whether the settings page is unlocked and which settings tab you last
-viewed). This data is cleared when the browser closes.
+While your browser is open, No Peek also keeps temporary session data:
+whether the settings page is unlocked, which settings tab you last viewed,
+and, for each open tab, the host of the last blocked site and why it was
+blocked (your blocklist, a keyword or the built-in list), so the popup can
+explain it. This data is erased when the tab or the browser closes.
 
 ## Permissions
 
@@ -46,8 +53,10 @@ viewed). This data is cleared when the browser closes.
   YouTube. Both changes are made by the browser itself; No Peek does not
   read your searches or the pages you visit.
 - **storage**: used to save your settings locally, as described above.
-- **webNavigation**: used to detect when a page was blocked, purely to
-  show a local count on your dashboard.
+- **webNavigation**: used to detect when a page was blocked, to show a
+  local count on your dashboard and to tell you which site was blocked and
+  why. Only the host and the reason are kept, in session storage, for that
+  tab.
 - **host_permissions (`<all_urls>`)**: required so the blocking rules can
   apply to any website you visit. It is also used to read the address of
   your current tab when you open the popup, so you can add that site to
