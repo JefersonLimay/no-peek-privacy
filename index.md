@@ -1,6 +1,6 @@
 # Privacy Policy — No Peek
 
-Last updated: October 25, 2026
+Last updated: October 28, 2026
 
 No Peek is a Chrome extension that blocks access to adult websites. This
 policy explains what data the extension handles.
@@ -36,10 +36,11 @@ The data stored locally includes:
   page
 - The date the extension was installed, and whether you already answered
   the review reminder, so it is only shown when it makes sense
+- Whether you dismissed the reminder to create a password
 
 While your browser is open, No Peek also keeps temporary session data:
-whether the settings page is unlocked, which settings tab you last viewed,
-and, for each open tab, the host of the last blocked site and why it was
+whether the settings page is unlocked, which settings tab and list you
+last viewed, and, for each open tab, the host of the last blocked site and why it was
 blocked (your blocklist, a keyword or the built-in list), so the popup can
 explain it. This data is erased when the tab or the browser closes.
 
@@ -56,7 +57,13 @@ explain it. This data is erased when the tab or the browser closes.
 - **webNavigation**: used to detect when a page was blocked, to show a
   local count on your dashboard and to tell you which site was blocked and
   why. Only the host and the reason are kept, in session storage, for that
-  tab.
+  tab. It is also used to check the address of each page you open against
+  your own blocklist, whitelist and keywords, on your device, so sites you
+  blocked stay blocked even when they load from the browser's cache. These
+  addresses are not stored or sent anywhere.
+- **favicon**: used to show the icon of each site in your lists on the
+  settings page. Icons are read from the browser's local cache; no request
+  is made to any website.
 - **host_permissions (`<all_urls>`)**: required so the blocking rules can
   apply to any website you visit. It is also used to read the address of
   your current tab when you open the popup, so you can add that site to
